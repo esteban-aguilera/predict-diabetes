@@ -51,7 +51,7 @@ class Logistic(nn.Module):
 # --------------------------------------------------------------------------------
 # General Functions
 # --------------------------------------------------------------------------------
-def train_model(model, data, criterion=None, optimizer=None):
+def train_model(model, data, epochs=1000, criterion=None, optimizer=None):
     X = torch.from_numpy(data.values[:,:-1])
     y = torch.from_numpy(data.values[:, -1])
     
@@ -61,7 +61,7 @@ def train_model(model, data, criterion=None, optimizer=None):
     if optimizer is None:
         optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-    for _ in range(10000):
+    for _ in range(epochs):
         training_step(X, y, model, criterion, optimizer)
         
         
